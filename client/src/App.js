@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import axios from 'axios';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [input, setInput] = useState('');
+    const [data, setData] = useState(null);
+
+    const handleSubmit = async () => {
+        try {
+            const response = await axios.post('http://localhost:5000/api/request', { userInput: input });
+            setData(response.data);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    }
+
+    return (
+        <div>
+            <input value={input} onChange={e => setInput(e.target.value)} />
+            <button onClick={handleSubmit}>Submit</button>
+            <pre>{JSON.stringify(data, null, 2)}</pre>
+        </div>
+    );
 }
 
 export default App;
