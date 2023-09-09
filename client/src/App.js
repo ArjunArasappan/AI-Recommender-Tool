@@ -9,6 +9,7 @@ function App() {
   const [pdfUrl, setPdfUrl] = useState(null);
   const [numPages, setNumPages] = useState(null);
 
+  // 
   const handleFileChange = event => {
     const selectedFile = event.target.files[0];
     setFile(selectedFile);
