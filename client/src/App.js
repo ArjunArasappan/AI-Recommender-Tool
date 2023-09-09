@@ -58,7 +58,7 @@ function App() {
     return (
         <div style={{ display: 'flex', justifyContent: 'space-between', padding: '50px' }}>
             <div style={{ flex: 1, paddingRight: '20px' }}>
-                <h2>Research Paper Uploader</h2>
+                <h2>Search Scholarly Articles & Papers</h2>
                 
                 <div>
                     <input 
@@ -71,6 +71,8 @@ function App() {
                         Submit Text
                     </button>
                 </div>
+
+                <h2>Paper submission</h2>
 
                 <div style={{ marginTop: '20px' }}>
                     <input 
