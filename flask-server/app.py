@@ -8,6 +8,7 @@ app = Flask(__name__)
 CORS(app)
 
 @app.route('/api/request', methods=['POST'])
+
 def make_api_request():
     data = request.json
     user_input = data.get('userInput')
