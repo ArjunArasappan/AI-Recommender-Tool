@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 
-const ListComponent = ({ files = [] }) => {
+const ListComponent = ({ files = [], onSelectPDF }) => {
+    const [items, setItems] = useState(files);
+
     useEffect(() => {
         setItems(files);
     }, [files]);
 
 
 
-    const [items, setItems] = useState(
-        files
-    );
-
-    const handleItemClick = (id) => {
-        console.log(`Item with id ${id} clicked.`);
+    const handleItemClick = (name) => {
+        if (onSelectPDF) {
+            onSelectPDF(name);
+        }
+        console.log(`Item with name ${name} clicked.`);
     }
 
     const handleDelete = (id) => {
@@ -31,7 +31,6 @@ const ListComponent = ({ files = [] }) => {
         setItems(updatedItems);
     }
 
-
     return (
         <div>
             <ul>
@@ -43,7 +42,7 @@ const ListComponent = ({ files = [] }) => {
                             onChange={() => handleCheckboxChange(item.id)}
                         />
                         <span
-                            onClick={() => handleItemClick(item.id)}
+                            onClick={() => handleItemClick(item.name)}
                             style={{ flex: 1, cursor: 'pointer', margin: '0 10px' }}
                         >
                             {item.name}
