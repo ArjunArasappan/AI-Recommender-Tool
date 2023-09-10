@@ -49,11 +49,19 @@ const Tabs = () => {
         activeTabButton: {
             background: '#007BFF',
             color: 'white',
+        },
+        logoStyle: {
+            position: 'absolute',
+            top: '10px',
+            left: '10px',
+            width: '100px', // or adjust based on your preference
+            height: 'auto'
         }
     }
 
     return (
         <div style={{ position: 'relative', minHeight: '100vh' }}>
+            <img src="/shelve.png" alt="Shelf Logo" style={styles.logoStyle} />
             <div style={styles.tabContainer}>
 
                 <button
