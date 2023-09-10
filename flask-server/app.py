@@ -18,7 +18,7 @@ def make_api_request():
 
     response = metaphor.search(
     user_input,
-    num_results=10,
+    num_results=20,
     use_autoprompt=True,
     )
 
