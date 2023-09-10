@@ -1,0 +1,20 @@
+.file-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    /* This works in modern browsers to set space between flex items */
+}
+
+.file-grid .file-icon {
+    flex: 0 0 calc(100% / 6 - 10px);
+    margin: 5px;
+}
+
+/* .file-grid { */
+/* display: grid; */
+/* grid-template-columns: repeat(4, 1fr); */
+/* Adjust the number (4) for desired columns */
+/* gap: 20px; */
+/* Adjust for desired spacing between icons */
+/* padding: 20px; */
+/* }  */
