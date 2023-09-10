@@ -57,14 +57,10 @@ const Tab2 = () => {
 
     return (
         <div style={{ display: 'flex', position: 'relative', padding: '50px' }}>
-
-            {/* The h2 element, centered */}
+            {/* Search and Upload section */}
             <div style={{ flex: 1, paddingRight: '20px', marginTop: '20px' }}>
                 <h2>Search Scholarly Articles & Papers</h2>
-
-
-                {/* Centering the search box and the button using flexbox */}
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '70px' }}> {/* Modified styles here */}
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '70px' }}>
                     <input
                         value={input}
                         onChange={e => setInput(e.target.value)}
@@ -76,24 +72,7 @@ const Tab2 = () => {
                     </button>
                 </div>
 
-                <h2 style={{ marginTop: '100px' }}>Paper submission</h2> {/* Increased the marginTop here */}
-
-                <div style={{ marginTop: '20px' }}>
-                    <input
-                        type="file"
-                        onChange={handleFileChange}
-                        accept=".pdf"
-                        style={{ ...styles.input, display: 'block', marginBottom: '10px' }}
-                    />
-                    <button onClick={handleFileSubmit} style={styles.button}>
-                        Upload PDF
-                    </button>
-                </div>
-            </div>
-
-            <div style={{ flex: 1, padding: '20px' }}> {/* Increased the marginTop here */}
-                <h2>Results:</h2>
-                {/* Results Container with a fixed height and scroll */}
+                <h2 style={{ marginTop: '100px' }}>Results:</h2>
                 <div style={{ height: '400px', overflowY: 'auto', marginTop: '20px' }}>
                     {Array.isArray(data) && data.map((item, index) => (
                         <div key={index} style={{ padding: '20px', marginBottom: '20px', border: '1px solid #ddd', borderRadius: '5px', boxShadow: '0px 2px 8px rgba(0,0,0,0.1)' }}>
@@ -106,13 +85,25 @@ const Tab2 = () => {
                     ))}
                 </div>
             </div>
+
+            {/* Upload section */}
+            <div style={{ flex: 1, paddingRight: '20px', marginTop: '20px' }}>
+                <h2>Paper submission</h2>
+                <div style={{ marginTop: '20px' }}>
+                    <input
+                        type="file"
+                        onChange={handleFileChange}
+                        accept=".pdf"
+                        style={{ ...styles.input, display: 'block', marginBottom: '10px' }}
+                    />
+                    <button onClick={handleFileSubmit} style={styles.button}>
+                        Upload PDF
+                    </button>
+                </div>
+            </div>
         </div>
-
-
-
-
-
     );
+
 }
 
 export default Tab2;

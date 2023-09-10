@@ -1,11 +1,14 @@
+// TextBoxList.js
 import React, { useState } from 'react';
-import './TextBoxList.css'; // Import the CSS
+import usePdfParser from './usePdfParser';
+import './TextBoxList.css';
 
 const TextBoxList = () => {
     const [textList, setTextList] = useState(['']);
+    const [parsedText, parsePdf] = usePdfParser();
 
-    const handleAddTextBox = () => {
-        setTextList(prevList => [...prevList, '']);
+    const handleAddTextBox = (text = '') => {
+        setTextList(prevList => [...prevList, text]);
     }
 
     const handleRemoveTextBox = (index) => {
@@ -16,6 +19,14 @@ const TextBoxList = () => {
         const newTextList = [...textList];
         newTextList[index] = event.target.value;
         setTextList(newTextList);
+    }
+
+    const handlePDFUpload = async (event) => {
+        const uploadedFile = event.target.files[0];
+        if (!uploadedFile) return;
+
+        await parsePdf(uploadedFile);
+        handleAddTextBox(parsedText);
     }
 
     return (
@@ -34,7 +45,10 @@ const TextBoxList = () => {
                     >x</span>
                 </div>
             ))}
-            <button onClick={handleAddTextBox}>Add Text Box</button>
+            <div>
+                <button onClick={() => handleAddTextBox()}>Add Text Box</button>
+                <input type="file" onChange={handlePDFUpload} accept=".pdf" />
+            </div>
         </div>
     );
 }

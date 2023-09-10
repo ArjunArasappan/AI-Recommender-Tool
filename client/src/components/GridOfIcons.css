@@ -7,26 +7,6 @@
     padding: 10px;
 }
 
-.file-container {
-    /* ... other styles ... */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    /* subtle shadow for depth */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    /* transition for hover effects */
-}
-
-.file-container:hover {
-    transform: translateY(-5px);
-    /* moves it up a little on hover */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
-    /* slightly bigger shadow on hover */
-}
-
-.file-icon {
-    /* ... other styles ... */
-    border-radius: 5px;
-    /* rounded corners for the icons */
-}
 
 .wrapper {
     display: flex;
