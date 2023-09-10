@@ -5,6 +5,7 @@ from metaphor_python import Metaphor
 bp = Blueprint('metaphor_routes', __name__)
 
 @bp.route('/api/request', methods=['POST'])
+
 def make_api_request():
     data = request.json
     user_input = data.get('userInput')
