@@ -7,6 +7,8 @@ const Tab1 = ({ username }) => {
     const [data, setData] = useState(null);
     const [selectedFile, setSelectedFile] = useState(null);
     const [uploadedFiles, setUploadedFiles] = useState([]);  // New state
+    const [submissionCount, setSubmissionCount] = useState(0);
+
 
     const handleFileChange = (event) => {
         setSelectedFile(event.target.files[0]);
@@ -17,14 +19,17 @@ const Tab1 = ({ username }) => {
             const prefix = "research papers on";
             let prompt = prefix + input;
             const response = await axios.post('http://127.0.0.1:5000/api/request', {
-                userInput: prompt,
-                username: username
+                'userInput': prompt,
+                'username': username
             });
             setData(response.data);
+            // Increment the submission count
+            setSubmissionCount(prevCount => prevCount + 1);
         } catch (error) {
             console.error("Error fetching data:", error);
         }
     }
+
 
     const handleFileSubmit = async () => {
         if (!selectedFile) {
@@ -103,7 +108,7 @@ const Tab1 = ({ username }) => {
                 <h2 style={{ marginTop: '60px', ...styles.heading }}>Results:</h2>
                 <div style={{ height: '400px', overflowY: 'auto', marginTop: '20px' }}>
                     {Array.isArray(data) && data.map((item, index) => (
-                        <ResearchPanel key={index} item={item} index={index} />
+                        <ResearchPanel key={index} item={item} index={index} username={username} />
                     ))}
                 </div>
             </div>

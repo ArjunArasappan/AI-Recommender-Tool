@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import './styles.css'
 import axios from 'axios';
 
-function ResearchPanel({ item, index, onWackyButtonClick }) {
+function ResearchPanel({ item, index, onWackyButtonClick, username }) {
     const [buttonState, setButtonState] = useState({
-        color: '#007BFF', 
-        text: 'Upload PDF', 
+        color: '#007BFF',
+        text: 'Upload PDF',
         disabled: false
     });
 
@@ -13,33 +13,35 @@ function ResearchPanel({ item, index, onWackyButtonClick }) {
         // console.log(item.url)
         if (item.url.slice(-4) === ".pdf" || item.url.includes("arxiv")) {
             try {
-                if (item.url.includes("arxiv")){
+                if (item.url.includes("arxiv")) {
                     item.url = item.url.replace("/abs/", "/pdf/")
-                    if (item.url.slice(-4) !== ".pdf"){
+                    if (item.url.slice(-4) !== ".pdf") {
                         item.url = item.url + ".pdf"
                     }
                 }
-                // console.log(item.url + "|AFTER")
+                console.log(item.url + "|AFTER")
                 // Fetch the PDF from the Flask endpoint
                 const response = await axios.post('http://127.0.0.1:5000/fetch-pdf', { pdf_url: item.url }, { responseType: 'blob' });
-            
-                const formData = new FormData();
-                formData.append('pdf', response.data, item.url); 
 
+                const formData = new FormData();
+                formData.append('pdf', response.data, item.url);
+                formData.append('username', username);
+                console.log(formData)
                 // Upload the modified PDF to the Flask backend
                 const uploadResponse = await axios.post('http://127.0.0.1:5000/api/upload', formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                     }
                 });
-    
+                console.log(formData + "AFJWPFJAI")
+
                 if (uploadResponse.data.success) {
                     setButtonState({ color: 'green', text: 'Upload Succeeded', disabled: true });
-                    const test3 = await axios.post('http://127.0.0.1:5000/', formData, {
-                        headers: {
-                            'Content-Type': 'multipart/form-data',
-                        }
-                    });
+                    // const test3 = await axios.post('http://127.0.0.1:5000/', formData, {
+                    //     headers: {
+                    //         'Content-Type': 'multipart/form-data',
+                    //     }
+                    // });
                     if (onWackyButtonClick) {
                         onWackyButtonClick();
                     }
@@ -47,13 +49,13 @@ function ResearchPanel({ item, index, onWackyButtonClick }) {
                     setButtonState({ color: 'red', text: 'Please Upload Manually', disabled: true });
                     console.error(uploadResponse.data.message);
                 }
-    
+
             } catch (error) {
                 console.error("Error processing and uploading PDF:", error);
                 setButtonState({ color: 'red', text: 'Please Upload Manually', disabled: true });
             }
         }
-        else{
+        else {
             setButtonState({ color: 'red', text: 'Please Upload Manually', disabled: true });
         }
 
@@ -62,15 +64,15 @@ function ResearchPanel({ item, index, onWackyButtonClick }) {
     };
 
     return (
-        <div key={index} style={{ 
-            padding: '20px', 
-            marginBottom: '20px', 
-            border: '1px solid #ddd', 
-            borderRadius: '5px', 
+        <div key={index} style={{
+            padding: '20px',
+            marginBottom: '20px',
+            border: '1px solid #ddd',
+            borderRadius: '5px',
             boxShadow: '0px 2px 8px rgba(0,0,0,0.1)',
-            display: 'flex', 
-            flexDirection: 'column', 
-            justifyContent: 'space-between' 
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between'
         }}>
             <div style={{ marginBottom: '10px' }}>
                 <h3>{item.title}</h3>
@@ -82,10 +84,10 @@ function ResearchPanel({ item, index, onWackyButtonClick }) {
                     <a href={item.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#007BFF', fontWeight: 'bold' }}>Read More</a>
                 </div>
                 <div>
-                    <button 
-                        onClick={() => handleWackyButtonClick(item, setButtonState)} 
+                    <button
+                        onClick={() => handleWackyButtonClick(item, setButtonState)}
                         className='app-button'
-                        style={{background: buttonState.color }}
+                        style={{ background: buttonState.color }}
                         disabled={buttonState.disabled}
                     >
                         {buttonState.text}

@@ -44,20 +44,21 @@ const Tabs = () => {
         <div style={{ position: 'relative', minHeight: '100vh' }}>
             <div style={styles.tabContainer}>
 
-
                 <button
-                    style={{ ...styles.tabButton, ...(activeTab === 'tab4' && styles.activeTabButton) }}
-                    onClick={() => setActiveTab('tab4')}
+                    style={{ ...styles.tabButton, ...(activeTab === 'tab1' && styles.activeTabButton) }}
+                    onClick={() => setActiveTab('tab1')}
                 >
                     Search
                 </button>
 
                 <button
-                    style={{ ...styles.tabButton, ...(activeTab === 'tab1' && styles.activeTabButton) }}
-                    onClick={() => setActiveTab('tab1')}
+                    style={{ ...styles.tabButton, ...(activeTab === 'tab4' && styles.activeTabButton) }}
+                    onClick={() => setActiveTab('tab4')}
                 >
                     Read
                 </button>
+
+
             </div>
             <div style={{ padding: '50px' }}>
                 {activeTab === 'tab1' && <Tab1 username={username} />}
