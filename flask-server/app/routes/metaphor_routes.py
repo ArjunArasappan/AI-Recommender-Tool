@@ -2,7 +2,7 @@ from flask import Blueprint, Flask, request, jsonify
 from flask_cors import CORS
 from metaphor_python import Metaphor
 
-bp = Blueprint('api_routes', __name__)
+bp = Blueprint('metaphor_routes', __name__)
 
 @bp.route('/api/request', methods=['POST'])
 def make_api_request():

@@ -1,1 +1,1 @@
-from .api_routes import make_api_request
+from .metaphor_routes import make_api_request
