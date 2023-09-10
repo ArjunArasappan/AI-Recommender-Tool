@@ -1,60 +1,39 @@
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
+import GridOfIcons from './components/GridOfIcons';
 import axios from 'axios';
+import PDFManager from './components/PDFManager';
+import TextBoxList from './components/TextBoxList'; // Assuming TextBoxList is in the same directory
 
-const Tab2 = () => {
-    const [input, setInput] = useState('');
-    const [data, setData] = useState(null);
-    const [selectedFile, setSelectedFile] = useState(null);
 
-    const handleFileChange = (event) => {
-        setSelectedFile(event.target.files[0]);
-    };
+const Tab2 = ({ username }) => {
+    const [allUploadedFiles, setAllUploadedFiles] = useState([]);
 
-    const handleTextSubmit = async () => {
+    const fetchAllUploadedFiles = async () => {
+        console.log("yehaw")
         try {
-            const prefix = "research papers on";
-            let prompt = prefix + input;
-            const response = await axios.post('http://127.0.0.1:5000/api/request', { userInput: prompt });
-            setData(response.data);
-        } catch (error) {
-            console.error("Error fetching data:", error);
-        }
-    }
-
-    const handleFileSubmit = async () => {
-        const formData = new FormData();
-        formData.append('pdf', selectedFile);
-        try {
-            const response = await axios.post('http://127.0.0.1:5000/api/upload', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
+            const response = await axios.get('http://127.0.0.1:5000/api/retrieve', {
+                params: {
+                    username
                 }
             });
-            setData(response.data);
+            setAllUploadedFiles(response.data);
         } catch (error) {
-            console.error("Error uploading file:", error);
+            console.error("Error fetching uploaded files:", error);
         }
-    }
+    };
 
-    const styles = {
-        button: {
-            padding: '10px 20px',
-            background: '#007BFF',
-            border: 'none',
-            borderRadius: '5px',
-            color: 'white',
-            cursor: 'pointer',
-            transition: 'background 0.3s',
-            marginTop: '10px'
-        },
-        input: {
-            padding: '10px',
-            width: '100%',
-            borderRadius: '5px',
-            border: '1px solid #ddd',
-        }
-    }
 
+    useEffect(() => {
+
+        fetchAllUploadedFiles();
+    }, []);
+
+    const fileData = allUploadedFiles.map((file, index) => (
+        { label: file, preview: "pdf.png" }
+    ))
+
+    // ];
     return (
         <div style={{ display: 'flex', position: 'relative', padding: '50px' }}>
             {/* Search and Upload section */}
