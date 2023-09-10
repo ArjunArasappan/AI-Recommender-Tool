@@ -1,13 +1,15 @@
 
 import React, { useState, useEffect } from 'react';
-import GridOfIcons from './components/GridOfIcons';
 import axios from 'axios';
 import PDFManager from './components/PDFManager';
 import TextBoxList from './components/TextBoxList'; // Assuming TextBoxList is in the same directory
 
 
-const Tab2 = ({ username }) => {
+const Tab2 = ({ username = "test" }) => {
+    console.log(username);
     const [allUploadedFiles, setAllUploadedFiles] = useState([]);
+    const [input, setInput] = useState('');
+
 
     const fetchAllUploadedFiles = async () => {
         console.log("yehaw")

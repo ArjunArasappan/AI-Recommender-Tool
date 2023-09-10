@@ -2,14 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
 import Tab1 from './Tab1';
-import Tab2 from './Tab2';
-import Tab3 from './Tab3';
 import Tab4 from './Tab4';
 
 const Tabs = () => {
     const [activeTab, setActiveTab] = useState('tab1');
     const [username, setUsername] = useState('');
-
 
     const hasPrompted = useRef(false);
     useEffect(() => {
@@ -20,20 +17,53 @@ const Tabs = () => {
         }
     }, [username]);
 
-
+    const styles = {
+        tabContainer: {
+            position: 'absolute',
+            top: '10px',
+            right: '10px',
+            display: 'flex',
+            gap: '10px' // This sets a space between each button
+        },
+        tabButton: {
+            background: 'none',
+            border: '1px solid #007BFF',
+            borderRadius: '5px',
+            padding: '5px 10px',
+            cursor: 'pointer',
+            fontSize: '0.9rem',
+            transition: 'background 0.3s'
+        },
+        activeTabButton: {
+            background: '#007BFF',
+            color: 'white',
+        }
+    }
 
     return (
-        <div>
-            <div>
-                <button onClick={() => setActiveTab('tab1')}>Tab 1</button>
-                <button onClick={() => setActiveTab('tab2')}>Tab 2</button>
-                <button onClick={() => setActiveTab('tab3')}>Tab 3</button>
-                <button onClick={() => setActiveTab('tab4')}>Tab 4</button>
+        <div style={{ position: 'relative', minHeight: '100vh' }}>
+            <div style={styles.tabContainer}>
+
+
+                <button
+                    style={{ ...styles.tabButton, ...(activeTab === 'tab4' && styles.activeTabButton) }}
+                    onClick={() => setActiveTab('tab4')}
+                >
+                    Search
+                </button>
+
+                <button
+                    style={{ ...styles.tabButton, ...(activeTab === 'tab1' && styles.activeTabButton) }}
+                    onClick={() => setActiveTab('tab1')}
+                >
+                    Read
+                </button>
             </div>
-            {activeTab === 'tab1' && <Tab1 />}
-            {activeTab === 'tab2' && <Tab2 />}
-            {activeTab === 'tab3' && <Tab3 />}
-            {activeTab === 'tab4' && <Tab4 />}
+            <div style={{ padding: '50px' }}>
+                {activeTab === 'tab1' && <Tab1 username={username} />}
+
+                {activeTab === 'tab4' && <Tab4 username={username} />}
+            </div>
         </div>
     );
 }
