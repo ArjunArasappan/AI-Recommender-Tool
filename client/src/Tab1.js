@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import ResearchPanel from './ResearchPanel';
 
 const Tab1 = ({ username }) => {
     const [input, setInput] = useState('');
@@ -101,13 +102,7 @@ const Tab1 = ({ username }) => {
                 {/* Results Container with a fixed height and scroll */}
                 <div style={{ height: '400px', overflowY: 'auto', marginTop: '20px' }}>
                     {Array.isArray(data) && data.map((item, index) => (
-                        <div key={index} style={{ padding: '20px', marginBottom: '20px', border: '1px solid #ddd', borderRadius: '5px', boxShadow: '0px 2px 8px rgba(0,0,0,0.1)' }}>
-                            <h3 style={{ marginBottom: '10px' }}>{item.title}</h3>
-                            <p><strong>Author:</strong> {item.author}</p>
-                            <p><strong>Published Date:</strong> {item.published_date}</p>
-                            <p><strong>Score:</strong> {item.score.toFixed(2)}</p>
-                            <a href={item.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#007BFF', fontWeight: 'bold' }}>Read More</a>
-                        </div>
+                        <ResearchPanel key={index} item={item} index={index} />
                     ))}
                 </div>
             </div>
