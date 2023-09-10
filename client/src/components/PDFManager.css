@@ -1,0 +1,33 @@
+/* PDFManager.css */
+.pdf-manager-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.pdf-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent background */
+    z-index: 10;
+    /* To ensure it overlays on top of GridOfIcons */
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border: none;
+    border-radius: 50%;
+    font-weight: bold;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 25px;
+}

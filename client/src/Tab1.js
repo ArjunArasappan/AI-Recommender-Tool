@@ -25,7 +25,6 @@ const Tab1 = () => {
         { label: file, preview: "pdf.png" }
     ))
 
-    // ];
     return (
         <div className="App">
             <div className="wrapper">
@@ -34,10 +33,13 @@ const Tab1 = () => {
                         <GridOfIcons files={fileData} onSelectPDF={handleSelectPDF} />
                     )}
                 </PDFManager>
+            </div>
+            <div className="text-box-list-wrapper">
                 <TextBoxList />
             </div>
         </div>
     );
+
 }
 
 export default Tab1;

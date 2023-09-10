@@ -10,6 +10,17 @@
     margin: 10px;
     /* Adds spacing between icons */
     flex: 0 0 auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* transition for hover effects */
+}
+
+.file-container:hover {
+    transform: translateY(-5px);
+    /* moves it up a little on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+    /* slightly bigger shadow on hover */
 }
 
 .file-icon {
@@ -21,6 +32,8 @@
     /* A default light gray, you can adjust */
     background-size: cover;
     background-position: center;
+    border-radius: 5px;
+    /* rounded corners for the icons */
 }
 
 .file-label {
@@ -28,11 +41,13 @@
     text-align: center;
     font-size: 14px;
     /* Adjust as needed */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    overflow: scroll;
+    text-overflow: clip;
+    /* white-space: nowrap; */
     width: 90%;
     /* Adjust as needed */
+    border-radius: 5px;
+    /* rounded corners for the icons */
 }
 
 .wrapper {

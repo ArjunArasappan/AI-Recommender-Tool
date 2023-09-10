@@ -1,0 +1,41 @@
+.icon-grid-container {
+    height: calc(100vh - 50px);
+    /* Full viewport height minus the space for TextBoxList or other elements */
+    overflow-y: auto;
+    overflow-x: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.file-container {
+    /* ... other styles ... */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* transition for hover effects */
+}
+
+.file-container:hover {
+    transform: translateY(-5px);
+    /* moves it up a little on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+    /* slightly bigger shadow on hover */
+}
+
+.file-icon {
+    /* ... other styles ... */
+    border-radius: 5px;
+    /* rounded corners for the icons */
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    /* Adjusts the direction to stack components vertically */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* fills the viewport vertically */
+    width: 100vw;
+    /* fills the viewport horizontally */
+}
