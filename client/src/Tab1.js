@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import ResearchPanel from './ResearchPanel';
 
-
 const Tab1 = ({ username }) => {
     const [input, setInput] = useState('');
     const [data, setData] = useState(null);
