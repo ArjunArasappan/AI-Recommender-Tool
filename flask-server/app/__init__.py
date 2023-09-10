@@ -9,11 +9,12 @@ def create_app():
 
 
     # Register blueprints (routes)
+
+    CORS(metaphor_routes.bp)
+    CORS(pdf_routes.bp)
     app.register_blueprint(metaphor_routes.bp)
     app.register_blueprint(pdf_routes.bp)
     
-    CORS(metaphor_routes.bp)
-    CORS(pdf_routes.bp)
 
 
     return app

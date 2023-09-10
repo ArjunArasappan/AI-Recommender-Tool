@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ResearchPanel from './ResearchPanel';
 
 const Tab1 = ({ username }) => {
+    // Tab1 States
     const [input, setInput] = useState('');
     const [data, setData] = useState(null);
     const [selectedFile, setSelectedFile] = useState(null);
-    const [uploadedFiles, setUploadedFiles] = useState([]);  // New state
+    const [uploadedFiles, setUploadedFiles] = useState([]);
     const [submissionCount, setSubmissionCount] = useState(0);
 
+    // Recommendations States
+    const [recommendedResults, setRecommendedResults] = useState([]);
+    const [allUploadedFiles, setAllUploadedFiles] = useState([]);
 
     const handleFileChange = (event) => {
         setSelectedFile(event.target.files[0]);
@@ -23,13 +27,11 @@ const Tab1 = ({ username }) => {
                 'username': username
             });
             setData(response.data);
-            // Increment the submission count
             setSubmissionCount(prevCount => prevCount + 1);
         } catch (error) {
             console.error("Error fetching data:", error);
         }
     }
-
 
     const handleFileSubmit = async () => {
         if (!selectedFile) {
@@ -39,7 +41,7 @@ const Tab1 = ({ username }) => {
 
         const formData = new FormData();
         formData.append('pdf', selectedFile);
-        formData.append('id', selectedFile.name); // assuming filename as ID for simplicity
+        formData.append('id', selectedFile.name);
         formData.append('username', username);
 
         try {
@@ -48,15 +50,47 @@ const Tab1 = ({ username }) => {
                     'Content-Type': 'multipart/form-data',
                 }
             });
+
             if (response.data.success) {
                 setUploadedFiles([...uploadedFiles, selectedFile.name]);
             }
             setData(response.data);
+
         } catch (error) {
             console.error("Error uploading file:", error);
         }
     }
 
+    const fetchAllUploadedFiles = async () => {
+        try {
+            const response = await axios.get('http://127.0.0.1:5000/api/retrieve', {
+                params: {
+                    username
+                }
+            });
+            setAllUploadedFiles(response.data);
+            if (response.data.length > 0) {
+                fetchRecommendations(response.data);
+            }
+        } catch (error) {
+            console.error("Error fetching uploaded files:", error);
+        }
+    };
+
+    useEffect(() => {
+        fetchAllUploadedFiles();
+    }, []);
+
+    const fetchRecommendations = async (uploadedFiles) => {
+        try {
+            const response = await axios.post('http://127.0.0.1:5000/api/recommend', {
+                links: uploadedFiles.slice(0, 3)
+            });
+            setRecommendedResults(response.data);
+        } catch (error) {
+            console.error("Error fetching recommendations:", error);
+        }
+    };
 
     const styles = {
         container: {
@@ -86,11 +120,10 @@ const Tab1 = ({ username }) => {
             paddingBottom: '10px',
             marginBottom: '20px',
         }
-    }
+    };
 
     return (
         <div style={{ display: 'flex', position: 'relative', padding: '50px' }}>
-
             <div style={{ flex: 1, paddingRight: '20px', ...styles.container }}>
                 <h2 style={styles.heading}>Search Scholarly Articles & Papers</h2>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '40px' }}>
@@ -104,15 +137,13 @@ const Tab1 = ({ username }) => {
                         Submit Text
                     </button>
                 </div>
-
                 <h2 style={{ marginTop: '60px', ...styles.heading }}>Results:</h2>
                 <div style={{ height: '400px', overflowY: 'auto', marginTop: '20px' }}>
                     {Array.isArray(data) && data.map((item, index) => (
-                        <ResearchPanel key={index} item={item} index={index} username={username} />
+                        <ResearchPanel key={`${submissionCount}-${index}`} item={item} index={index} username={username} />
                     ))}
                 </div>
             </div>
-
             <div style={{ flex: 1, paddingLeft: '20px', ...styles.container }}>
                 <h2 style={{ ...styles.heading }}>Paper submission</h2>
                 <div style={{ marginTop: '20px' }}>
@@ -126,9 +157,15 @@ const Tab1 = ({ username }) => {
                         Upload PDF
                     </button>
                 </div>
+                <h2 style={{ marginTop: '60px', ...styles.heading }}>Recommendations</h2>
+                <div style={{ height: '400px', overflowY: 'auto', marginTop: '20px' }}>
+                    {Array.isArray(recommendedResults) && recommendedResults.map((item, index) => (
+                        <ResearchPanel key={index} item={item} index={index} />
+                    ))}
+                </div>
             </div>
         </div>
     );
-}
+};
 
 export default Tab1;

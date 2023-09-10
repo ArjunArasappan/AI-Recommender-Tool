@@ -17,6 +17,18 @@ const Tabs = () => {
         }
     }, [username]);
 
+    useEffect(() => {
+        if (!hasPrompted.current) {
+            const enteredUsername = prompt("Please enter your username:");
+            if (enteredUsername) { // Check if enteredUsername is not empty or undefined
+                setUsername(enteredUsername);
+                hasPrompted.current = true; // Set the ref to true so we know we've prompted already
+            }
+        }
+    }, []);
+
+
+
     const styles = {
         tabContainer: {
             position: 'absolute',
@@ -61,9 +73,14 @@ const Tabs = () => {
 
             </div>
             <div style={{ padding: '50px' }}>
-                {activeTab === 'tab1' && <Tab1 username={username} />}
-
-                {activeTab === 'tab4' && <Tab4 username={username} />}
+                {username ? (
+                    <>
+                        {activeTab === 'tab1' && <Tab1 username={username} />}
+                        {activeTab === 'tab4' && <Tab4 username={username} />}
+                    </>
+                ) : (
+                    <p>Waiting for username...</p>
+                )}
             </div>
         </div>
     );
