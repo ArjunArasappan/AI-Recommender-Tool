@@ -1,5 +1,5 @@
 import React from 'react';
-import GridOfIcons from './components/GridOfIcons';
+import GridOfIcons from './GridOfIcons';
 
 
 const Tab1 = () => {

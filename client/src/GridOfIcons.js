@@ -1,6 +1,6 @@
 import React from 'react';
-import FileIcon from './FileIcon';
-import './FileIcon/FileIcon.css';
+import FileIcon from './components/FileIcon/FileIcon';
+import './components/FileIcon/FileIcon.css';
 
 const GridOfIcons = ({ files = [] }) => {
     return (
