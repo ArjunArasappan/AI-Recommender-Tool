@@ -58,7 +58,7 @@ function App() {
     return (
         <div style={{ display: 'flex', justifyContent: 'space-between', padding: '50px' }}>
             <div style={{ flex: 1, paddingRight: '20px' }}>
-                <h2>Research Paper Uploader</h2>
+                <h2>Search Scholarly Articles & Papers</h2>
                 
                 <div>
                     <input 
@@ -71,6 +71,8 @@ function App() {
                         Submit Text
                     </button>
                 </div>
+
+                <h2>Paper submission</h2>
 
                 <div style={{ marginTop: '20px' }}>
                     <input 
@@ -86,13 +88,17 @@ function App() {
             </div>
             
             <div style={{ flex: 1, padding: '20px', borderLeft: '1px solid #ccc' }}>
-                <h2>Results:</h2>
-                {Array.isArray(data) && data.map((item, index) => (
-                    <div key={index} style={{ padding: '10px', marginBottom: '10px', border: '1px solid #ddd', borderRadius: '5px', boxShadow: '0px 2px 8px rgba(0,0,0,0.1)' }}>
-                        <pre>{JSON.stringify(item, null, 2)}</pre>
-                    </div>
-                ))}
-            </div>
+            <h2>Results:</h2>
+            {Array.isArray(data) && data.map((item, index) => (
+                <div key={index} style={{ padding: '20px', marginBottom: '20px', border: '1px solid #ddd', borderRadius: '5px', boxShadow: '0px 2px 8px rgba(0,0,0,0.1)' }}>
+                    <h3 style={{ marginBottom: '10px' }}>{item.title}</h3>
+                    <p><strong>Author:</strong> {item.author}</p>
+                    <p><strong>Published Date:</strong> {item.published_date}</p>
+                    <p><strong>Score:</strong> {item.score.toFixed(2)}</p>
+                    <a href={item.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#007BFF', fontWeight: 'bold' }}>Read More</a>
+                </div>
+            ))}
+        </div>
         </div>
     );
 }
