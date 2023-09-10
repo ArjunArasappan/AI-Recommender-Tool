@@ -1,0 +1,38 @@
+.Tab1 {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    height: 100vh;
+    background-color: #f5f5f5;
+    /* light gray background for a cleaner look */
+    font-family: 'Arial', sans-serif;
+    /* A simple, clean font */
+}
+
+.wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    background-color: #fff;
+    /* make this white for contrast */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* subtle shadow for depth */
+    border-radius: 5px;
+    /* rounded corners */
+    overflow: hidden;
+    /* in case anything overflows, it's hidden */
+}
+
+.text-box-list-wrapper {
+    flex-basis: 250px;
+    /* giving it a bit more space */
+    margin-left: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 20px;
+    /* some internal spacing */
+}

@@ -1,0 +1,54 @@
+/* In TextBoxList.css */
+
+.text-box-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    /* space between each text box */
+}
+
+.text-box-input {
+    padding: 10px;
+    /* padding inside the input box */
+    border-radius: 4px;
+    /* rounded corners */
+    border: 1px solid #ccc;
+    /* a light gray border */
+    flex: 1;
+    /* to take the full available width */
+}
+
+.remove-text-btn {
+    background-color: #e74c3c;
+    /* a red color for delete */
+    color: white;
+    margin-left: 10px;
+    /* some spacing between input and the delete button */
+    padding: 5px 8px;
+    /* some padding for the button */
+    border: none;
+    border-radius: 50%;
+    /* make it round */
+    cursor: pointer;
+    font-size: 12px;
+    /* adjusting the font size */
+}
+
+button {
+    padding: 10px 20px;
+    /* vertical and horizontal padding */
+    background-color: #3498db;
+    /* a blue color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    /* rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    /* a transition for hover effect */
+}
+
+button:hover {
+    background-color: #2980b9;
+    /* a darker blue for hover effect */
+}

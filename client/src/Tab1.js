@@ -9,7 +9,7 @@ const Tab1 = ({ username }) => {
     const handleFileChange = (event) => {
         setSelectedFile(event.target.files[0]);
     };
-    
+
     const handleTextSubmit = async () => {
         try {
             const prefix = "research papers on";
@@ -39,7 +39,6 @@ const Tab1 = ({ username }) => {
             console.error("Error uploading file:", error);
         }
     }
-    
     
 
     const styles = {

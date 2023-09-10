@@ -10,13 +10,19 @@ const Tab2 = ({ username }) => {
     const [allUploadedFiles, setAllUploadedFiles] = useState([]);
 
     const fetchAllUploadedFiles = async () => {
+        console.log("yehaw")
         try {
-            const response = await axios.get('http://127.0.0.1:5000/api/retrieve');
-            setAllUploadedFiles(response.data);
-        } catch (error) {
-            console.error("Error fetching uploaded files:", error);
+        const response = await axios.get('http://127.0.0.1:5000/api/retrieve', {
+        params: {
+        username
         }
-    };
+        });
+        setAllUploadedFiles(response.data);
+        } catch (error) {
+        console.error("Error fetching uploaded files:", error);
+        }
+        };
+        
 
     useEffect(() => {
 
