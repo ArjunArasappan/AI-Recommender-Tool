@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Dropdown from '../../Dropdown';
+import Dropdown from '../Dropdown';
 import './FileIcon.css';
 
-const FileIcon = ({ label = 'File', preview }) => {
+const FileIcon = ({ label = 'File', preview, onSelectPDF }) => {
     const [isHighlighted, setIsHighlighted] = useState(false);
     const [dropdownPosition, setDropdownPosition] = useState(null);
     const containerRef = useRef(null); // Reference to the file container
@@ -48,6 +48,8 @@ const FileIcon = ({ label = 'File', preview }) => {
                 <Dropdown
                     position={dropdownPosition}
                     onClose={() => setDropdownPosition(null)}
+                    fileLabel={label}
+                    onSelectPDF={onSelectPDF}
                 />}
         </div>
     );

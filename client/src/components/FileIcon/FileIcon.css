@@ -51,7 +51,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: left;
-    gap: 10px;
-    width: 650px;
+    gap: 40px;
+    width: 800px;
     /* Spacing between icons in grid, adjust as needed */
 }

@@ -1,6 +1,10 @@
 import React from 'react';
 
-const Dropdown = ({ position, onClose }) => {
+const Dropdown = ({ position, onClose, fileLabel, onSelectPDF }) => {
+    const handleViewPDF = () => {
+        onSelectPDF(fileLabel);
+        onClose();
+    };
     // Inline styles for positioning based on cursor click
     const style = {
         position: 'absolute',
@@ -17,7 +21,7 @@ const Dropdown = ({ position, onClose }) => {
 
     return (
         <div style={style}>
-            <button onClick={onClose}>View PDF</button>
+            <button onClick={handleViewPDF}>View PDF</button>
             <button onClick={onClose}>Change Comprehension</button>
             <input type="range" min="1" max="100" />
         </div>

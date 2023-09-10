@@ -1,28 +1,40 @@
-import React from 'react';
-import GridOfIcons from './GridOfIcons';
+import React, { useState, useEffect } from 'react';
+import GridOfIcons from './components/GridOfIcons';
+import axios from 'axios';
+import PDFManager from './components/PDFManager';
+import TextBoxList from './components/TextBoxList'; // Assuming TextBoxList is in the same directory
 
 
 const Tab1 = () => {
-    const fileData = [
-        { label: 'File1', preview: "pdf.png" },
-        { label: 'File2', preview: "pdf.png" },
-        { label: 'File3', preview: "pdf.png" },
-        { label: 'File4', preview: "pdf.png" },
-        { label: 'File5', preview: "pdf.png" },
-        { label: 'File6', preview: "pdf.png" },
-        { label: 'File7', preview: "pdf.png" },
-        { label: 'File8', preview: "pdf.png" },
-        { label: 'File9', preview: "pdf.png" },
-        { label: 'File10', preview: "pdf.png" },
-        { label: 'File11', preview: "pdf.png" },
-        { label: 'File12', preview: "pdf.png" },
+    const [allUploadedFiles, setAllUploadedFiles] = useState([]);
 
-        // ... add as many files as you want
-    ];
+    const fetchAllUploadedFiles = async () => {
+        try {
+            const response = await axios.get('http://127.0.0.1:5000/api/retrieve');
+            setAllUploadedFiles(response.data);
+        } catch (error) {
+            console.error("Error fetching uploaded files:", error);
+        }
+    };
+
+    useEffect(() => {
+        fetchAllUploadedFiles();
+    }, []);
+
+    const fileData = allUploadedFiles.map((file, index) => (
+        { label: file, preview: "pdf.png" }
+    ))
+
+    // ];
     return (
         <div className="App">
             <div className="wrapper">
-                <GridOfIcons files={fileData} />
+                <PDFManager>
+                    {(handleSelectPDF) => (
+                        <GridOfIcons files={fileData} onSelectPDF={handleSelectPDF} />
+                    )}
+                </PDFManager>
+                <TextBoxList />
             </div>
         </div>
     );
