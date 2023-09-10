@@ -1,25 +1,54 @@
-import React, { useRef, useState, useEffect } from 'react';
-import * as pdfjs from 'pdfjs-dist';
+import React, { useState, useEffect, useRef } from 'react';
+import Dropdown from './Dropdown';
 import './FileIcon.css';
-import usePdfRenderer from './PdfRenderer.js';
 
-// Set up the worker for pdf.js
-pdfjs.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.6.172/pdf.worker.min.js';
+const FileIcon = ({ label = 'File', preview }) => {
+    const [isHighlighted, setIsHighlighted] = useState(false);
+    const [dropdownPosition, setDropdownPosition] = useState(null);
+    const containerRef = useRef(null); // Reference to the file container
 
-const getFileNameFromUrl = (url) => {
-    return url.split('/').pop();
-}
+    const style = {
+        backgroundImage: preview ? `url(${preview})` : undefined,
+        border: isHighlighted ? '2px solid blue' : 'none' // Highlighting with a blue border for this example.
+    };
 
-const FileIcon = ({ label = "File", pdfUrl }) => {
-    const { canvasRef, isLoading } = usePdfRenderer(pdfUrl);
-    const renderTaskRef = useRef(null); // to store the rendering task
-    const fileName = getFileNameFromUrl(pdfUrl);
+    const handleClick = (event) => {
+        setIsHighlighted(!isHighlighted);
+
+        if (!dropdownPosition) {
+            setDropdownPosition({
+                x: event.clientX,
+                y: event.clientY
+            });
+        } else {
+            setDropdownPosition(null);
+        }
+    };
+
+    useEffect(() => {
+        const handleOutsideClick = (event) => {
+            if (containerRef.current && !containerRef.current.contains(event.target)) {
+                setIsHighlighted(false);
+                setDropdownPosition(null);
+            }
+        };
+
+        document.addEventListener('click', handleOutsideClick);
+
+        return () => {
+            document.removeEventListener('click', handleOutsideClick);
+        };
+    }, [dropdownPosition]);
 
     return (
-        <div>
-            {isLoading ? <p>Loading...</p> : null}
-            <canvas ref={canvasRef}></canvas>
-            <p>{fileName}</p>
+        <div className="file-container" onClick={handleClick} ref={containerRef}>
+            <div className="file-icon" style={style}></div>
+            <div className="file-label">{label}</div>
+            {dropdownPosition &&
+                <Dropdown
+                    position={dropdownPosition}
+                    onClose={() => setDropdownPosition(null)}
+                />}
         </div>
     );
 }
