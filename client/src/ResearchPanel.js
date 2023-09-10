@@ -37,11 +37,11 @@ function ResearchPanel({ item, index, onWackyButtonClick, username }) {
 
                 if (uploadResponse.data.success) {
                     setButtonState({ color: 'green', text: 'Upload Succeeded', disabled: true });
-                    // const test3 = await axios.post('http://127.0.0.1:5000/', formData, {
-                    //     headers: {
-                    //         'Content-Type': 'multipart/form-data',
-                    //     }
-                    // });
+                    const test3 = await axios.post('http://127.0.0.1:5000/title', formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                        }
+                    });
                     if (onWackyButtonClick) {
                         onWackyButtonClick();
                     }

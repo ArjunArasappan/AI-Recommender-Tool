@@ -7,7 +7,7 @@ import io
 # Initialization
 app = Flask(__name__)
 bp = Blueprint('pdf_routes', __name__)
-client = storage.Client.from_service_account_json('../keys/pragmatic-byway-398602-13e4fae477cb.json')
+client = storage.Client.from_service_account_json('../AI-Recommender-Tool/keys/pragmatic-byway-398602-13e4fae477cb.json')
 bucket_name = 'penn-apps-bucket'
 bucket = client.get_bucket(bucket_name)
 

@@ -137,6 +137,33 @@ def explain_jargon():
 
     return jsonify({"explanation": explanation, "context": in_context})
 
+
+@bp.route('/title', methods=['POST'])
+def extract_pdf_title():
+    if 'pdf' not in request.files:
+        return jsonify(success=False, message='No file part'), 400
+
+    file = request.files['pdf']
+
+    if file.filename == '':
+        return jsonify(success=False, message='No selected file'), 400
+
+    if file:
+        try:
+            # Use BytesIO to handle the uploaded file in memory
+            pdf = PyPDF2.PdfReader(BytesIO(file.read()))
+            title = pdf.metadata
+
+            if not title:
+                title = file.filename
+
+            return title
+
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
+
+    return jsonify({"error": "Invalid file"}), 400
+
 @bp.route('/extract', methods=['POST'])
 def extract_text():
     if 'pdf' not in request.files:
