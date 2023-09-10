@@ -3,6 +3,7 @@ import axios from 'axios';
 import ListComponent from './ListComponent';
 import TextBoxList from './components/TextBoxList';
 
+
 const Tab4 = ({ username }) => {
     const [allUploadedFiles, setAllUploadedFiles] = useState([]);
     const [selectedPDFURL, setSelectedPDFURL] = useState('');
@@ -30,16 +31,16 @@ const Tab4 = ({ username }) => {
     ));
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'space-between', padding: '50px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', padding: '50px', background: '#FAF3E0' }}>
 
-            <div style={{ flex: 1, paddingRight: '20px', background: '#f4f4f8', padding: '20px', borderRadius: '10px' }}>
-                <h3 style={{ borderBottom: '2px solid #333', paddingBottom: '10px' }}>Your Lists & Texts</h3>
+            <div style={{ flex: 1, paddingRight: '20px', background: '#F5E8C7', padding: '20px', borderRadius: '10px' }}>
+                <h3 style={{ borderBottom: '2px solid #8C7355', paddingBottom: '10px', color: '#8C7355' }}>Your Lists & Texts</h3>
                 <ListComponent files={fileData} />
                 <TextBoxList />
             </div>
 
-            <div style={{ flex: 2, paddingLeft: '20px', background: '#f4f4f8', padding: '20px', borderRadius: '10px' }}>
-                <h3 style={{ borderBottom: '2px solid #333', paddingBottom: '10px' }}>Uploaded PDFs</h3>
+            <div style={{ flex: 2, paddingLeft: '20px', background: '#F5E8C7', padding: '20px', borderRadius: '10px' }}>
+                <h3 style={{ borderBottom: '2px solid #8C7355', paddingBottom: '10px', color: '#8C7355' }}>Uploaded PDFs</h3>
                 {allUploadedFiles.length > 0 && (
                     <div style={{ marginBottom: '20px' }}>
                         <select
@@ -47,8 +48,10 @@ const Tab4 = ({ username }) => {
                                 padding: '10px',
                                 width: '100%',
                                 borderRadius: '5px',
-                                border: '1px solid #ddd',
-                                marginBottom: '10px'
+                                border: '1px solid #DDCBA4',
+                                marginBottom: '10px',
+                                background: '#FAF3E0',
+                                color: '#8C7355'
                             }}
                             onChange={(e) => {
                                 const pdfURL = `http://127.0.0.1:5000/api/retrieve/${e.target.value}?username=${username}`;
