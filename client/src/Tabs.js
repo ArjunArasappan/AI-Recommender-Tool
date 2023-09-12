@@ -9,25 +9,16 @@ const Tabs = () => {
     const [username, setUsername] = useState('');
 
     const hasPrompted = useRef(false);
+    
     useEffect(() => {
         if (!hasPrompted.current) {
             const enteredUsername = prompt("Please enter your username:");
-            setUsername(enteredUsername);
-            hasPrompted.current = true; // Set the ref to true so we know we've prompted already
-        }
-    }, [username]);
-
-    useEffect(() => {
-        if (!hasPrompted.current) {
-            const enteredUsername = prompt("Please enter your username:");
-            if (enteredUsername) { // Check if enteredUsername is not empty or undefined
+            if (enteredUsername) {
                 setUsername(enteredUsername);
-                hasPrompted.current = true; // Set the ref to true so we know we've prompted already
+                hasPrompted.current = true; // Mark that the user has been prompted
             }
         }
     }, []);
-
-
 
     const styles = {
         tabContainer: {
@@ -35,7 +26,7 @@ const Tabs = () => {
             top: '10px',
             right: '10px',
             display: 'flex',
-            gap: '10px' // This sets a space between each button
+            gap: '10px'
         },
         tabButton: {
             background: 'none',
@@ -50,35 +41,45 @@ const Tabs = () => {
             background: '#007BFF',
             color: 'white',
         },
-        logoStyle: {
+        logoAndTextContainer: {
+            display: 'flex',
+            alignItems: 'center',
             position: 'absolute',
             top: '10px',
             left: '10px',
-            width: '100px', // or adjust based on your preference
+            gap: '10px'
+        },
+        logoStyle: {
+            width: '100px',
             height: 'auto'
+        },
+        shelfTextStyle: {
+            fontSize: '3rem',
+            fontFamily: '"Arial", sans-serif',
+            fontWeight: 'bold',
+            color: '#007BFF'
         }
     }
 
     return (
         <div style={{ position: 'relative', minHeight: '100vh' }}>
-            <img src="/shelve.png" alt="Shelf Logo" style={styles.logoStyle} />
+            <div style={styles.logoAndTextContainer}>
+                <img src="/shelve.png" alt="Shelf Logo" style={styles.logoStyle} />
+                <span style={styles.shelfTextStyle}>Shelve</span>
+            </div>
             <div style={styles.tabContainer}>
-
                 <button
                     style={{ ...styles.tabButton, ...(activeTab === 'tab1' && styles.activeTabButton) }}
                     onClick={() => setActiveTab('tab1')}
                 >
                     Search
                 </button>
-
                 <button
                     style={{ ...styles.tabButton, ...(activeTab === 'tab4' && styles.activeTabButton) }}
                     onClick={() => setActiveTab('tab4')}
                 >
                     Read
                 </button>
-
-
             </div>
             <div style={{ padding: '50px' }}>
                 {username ? (
