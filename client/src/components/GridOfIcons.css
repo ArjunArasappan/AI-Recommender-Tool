@@ -1,0 +1,21 @@
+.icon-grid-container {
+    height: calc(100vh - 50px);
+    /* Full viewport height minus the space for TextBoxList or other elements */
+    overflow-y: auto;
+    overflow-x: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    /* Adjusts the direction to stack components vertically */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* fills the viewport vertically */
+    width: 100vw;
+    /* fills the viewport horizontally */
+}

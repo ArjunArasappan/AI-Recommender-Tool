@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "pragmatic-byway-398602",
+  "private_key_id": "13e4fae477cbb565abf8927e81ded066bff82543",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCgm3Yah8cVs7dc\nPsRcLOc3qiCxiMuZVT5y2oFNDIaqLw/XmS99xtACVfhyCs+dlOK8dLZfaE8gPak3\nrvkrEey5W/OzUcldQDeT9kNcksbWVKXo9bO1veNlDrgfUX1kPPpGeN+YpjWgOSIL\nOyyIj8mGcHDUlsC4KCot1s+ADiJORm3S3TGeTcWKP+pV9VPa28nP6tWyv+bkaQX0\nob/7tHdKv//Y6nZfwBcYR9QU2iBd4mXQ8ZGl0jCU0/0du30KuiKHNZDrsWBr9QqM\nUPHFW6ZAp24Uh2OEfAhwUIDg7r/4HVne1L8i6gr5+A99CKVP+GN2J8v9M4BebNvT\nWv8HpD2DAgMBAAECggEAANJFYdsE6SGrU+Txnc5lplK6lRMv21+6EIij4FAqliSP\nI66htWEhajRPWiH1BYd1O2UraO8rIcKUTXfEcsnGLf0q5hAKhBgSe1wR5HTPCy87\n+VDcXkG+L85J9xsJwEv8NFpk5lkfQsECtrpS6Xs2xXcTafrqubu22izUOyxB/6gk\nI3txOPwzduFHIDEglpKXbmAXawahjyU6j2cl/vKi+0Gq28IGKZdShIGuE7UFYiMu\nAe+n2SdC8On5+eplsju293J8moFIZXZXonpAqjHA2V6KxbA93HO/YrlxDlO7+Bpk\nOLkRxUX54J7esonS2z6BseLkhiDq9C33NN7+ozQQAQKBgQDa2LQF24Gm+nivqv9b\niU3JR7R1G3M960j2GKmrtHBuceNwySTNmP33891y1wBxXodjwS1vuuhMJbnxV5OV\nyc3+c/UKjot4L112QZAIXyAHCcfpbsEkerO5TrvmBXc5Bbk0qj9jh7jYgUFewHw1\nmGRkVDSplnDfBcRyGHKyO9qNgwKBgQC7357k6QuuOKW+s2yG3nc2Z7vRapRkZuR0\ntRxPRaMN5LbKUCX1c0LdtqjR/PrW+dVcGfPoRPVG9RWMDCPfIk+p/45kw1RR1e71\n0GCQdQ/sxgqQkKHM9PMUFd+f/6cqZZOigiQxdnf87ogcP2WQIHNTvdNALF/IWl/P\n0m53rBCQAQKBgQCAeODN43usU7PPpHm9+c/BTqfga5nuipZNalMIqqeqHo+fYWWK\nkLre+blRtmfbJdwjMn+C7N17/lW3GWtZbpvQObBrXxz/FAcw6fItB/LcTuCd59fY\nm3OwYEksEp9XyUVdZmhJ/J4F83M1tZf1Op4My+YSfG+MbW1ScYm7mimGEwKBgQCG\n/ez76f+8lXNyjRWj6uGZs/ueQ4iQg+YPfbrzssOwTfCReflsXf9js8Wl7LKIGUeX\nQAajlDjxXVS4Jlj4EX1QVxIHkNpbWu6yraFU6uggZ0RcD7BSxoaKnhTqsBV7PzVP\nhVdgOxGIKhSex2bAorB7MWBDMh84pMdHWpqJXpcgAQKBgQC0M/CtrAWACvpIk600\ngHuKQS+BX/tWXU2jseUP7TgRrKVMvS+AqTAVqokpFWUbBLxBdUPTpHYGrY7cqP2C\nDbnF8l4OKXc3g+WyAy103XOBYZj1+ibIKZvsfJB9mHq+X6rp5hUQxhym5rDcyNx2\nqZmFkWDwr+alC3kNcHQl9Ley6w==\n-----END PRIVATE KEY-----\n",
+  "client_email": "cloudstorage@pragmatic-byway-398602.iam.gserviceaccount.com",
+  "client_id": "118039829743596055510",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/cloudstorage%40pragmatic-byway-398602.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

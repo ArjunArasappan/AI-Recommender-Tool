@@ -1,1 +1,13 @@
 venv/
+client/node_modules
+node_modules
+flask-server/.venv
+flask-server/app/__pycache__/__init__.cpython-311.pyc
+flask-server/app/routes/__pycache__/__init__.cpython-311.pyc
+flask-server/app/routes/__pycache__/metaphor_routes.cpython-311.pyc
+flask-server/app/routes/__pycache__/pdf_routes.cpython-311.pyc
+flask-server/app/__pycache__/__init__.cpython-311.pyc
+flask-server/app/routes/__pycache__/__init__.cpython-311.pyc
+flask-server/app/routes/__pycache__/metaphor_routes.cpython-311.pyc
+flask-server/app/routes/__pycache__/pdf_routes.cpython-311.pyc
+*.pyc

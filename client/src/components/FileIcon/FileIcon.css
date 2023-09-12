@@ -1,0 +1,72 @@
+.file-container {
+    width: 100px;
+    /* Adjust as needed */
+    height: 120px;
+    /* Adjust as needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    /* Adds spacing between icons */
+    flex: 0 0 auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* transition for hover effects */
+}
+
+.file-container:hover {
+    transform: translateY(-5px);
+    /* moves it up a little on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+    /* slightly bigger shadow on hover */
+}
+
+.file-icon {
+    width: 80px;
+    /* Adjust as needed */
+    height: 80px;
+    /* Adjust as needed */
+    background-color: #f5f5f5;
+    /* A default light gray, you can adjust */
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+    /* rounded corners for the icons */
+}
+
+.file-label {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+    /* Adjust as needed */
+    overflow: scroll;
+    text-overflow: clip;
+    /* white-space: nowrap; */
+    width: 90%;
+    /* Adjust as needed */
+    border-radius: 5px;
+    /* rounded corners for the icons */
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    /* height: 100vh; */
+    /* fills the viewport vertically */
+    width: 100vw;
+    /* fills the viewport horizontally */
+}
+
+/* For the grid layout */
+.icon-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: 40px;
+    width: 800px;
+    /* Spacing between icons in grid, adjust as needed */
+}
