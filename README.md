@@ -1,6 +1,6 @@
 # AI-Recommender-Tool
 
-<img width="1512" alt="Screen Shot 2023-09-12 at 6 12 20 AM" src="https://github.com/ArjunArasappan/AI-Recommender-Tool/assets/93750489/df43fc47-844f-452b-ba5f-8d6bb5204171">
+<img width="1512" alt="image" src="https://github.com/ArjunArasappan/AI-Recommender-Tool/assets/93750489/f0866b4f-2397-4e46-b61b-559936998dcb">
 <img width="1512" alt="Screen Shot 2023-09-12 at 6 14 09 AM" src="https://github.com/ArjunArasappan/AI-Recommender-Tool/assets/93750489/e932a846-dab6-4499-82d9-f32d84495fac">
 
 
